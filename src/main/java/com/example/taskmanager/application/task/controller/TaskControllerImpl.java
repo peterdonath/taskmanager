@@ -28,7 +28,7 @@ public class TaskControllerImpl implements TaskController {
 
   private final TaskServiceImpl taskService;
 
-  @Value(value = "${com.example.taskmanager.default-page-size}")
+  @Value(value = "${taskmanager.default-page-size}")
   private int defaultPageSize;
 
   @Override
