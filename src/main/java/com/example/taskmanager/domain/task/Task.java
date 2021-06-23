@@ -1,9 +1,12 @@
 package com.example.taskmanager.domain.task;
 
 import com.example.taskmanager.domain.shared.AbstractEntity;
+import com.example.taskmanager.domain.shared.Status;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,9 +17,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
- * @author peter.donath@gmail.com
+ * @author donath.peter@gmail.com
  */
 
 @Entity
@@ -34,15 +38,24 @@ public class Task extends AbstractEntity {
   @Column(name = "TASK_ID", nullable = false)
   private Long id;
 
+  @Setter
   @Column(name = "USER_ID", nullable = false)
   private Long userId;
 
+  @Setter
   @Column(name = "TASK_NAME", length = 100, nullable = false)
   private String name;
 
+  @Setter
   @Column(name = "DESCRIPTION", length = 4000)
   private String description;
 
+  @Setter
   @Column(name = "DATE_TIME", columnDefinition = "TIMESTAMP")
   private LocalDateTime dateTime;
+
+  @Setter
+  @Column(name = "STATUS")
+  @Enumerated(EnumType.STRING)
+  private Status status;
 }
