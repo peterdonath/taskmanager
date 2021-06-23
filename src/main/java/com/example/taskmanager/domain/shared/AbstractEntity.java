@@ -14,7 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
- * @author peter.donath@gmail.com
+ * @author donath.peter@gmail.com
  */
 
 @Getter
@@ -25,7 +25,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class AbstractEntity {
 
   @Column(name = "ACTIVE_FLAG")
-  private boolean active;
+  private boolean activeFlag = true;
 
   @CreatedDate
   @Column(name = "CREATION_DATE", columnDefinition = "TIMESTAMP")
@@ -38,4 +38,11 @@ public class AbstractEntity {
   @Version
   @Column(name = "VERSION")
   private long version;
+
+  /**
+   * Sets the active flag to false
+   */
+  public void disable() {
+    this.activeFlag = false;
+  }
 }

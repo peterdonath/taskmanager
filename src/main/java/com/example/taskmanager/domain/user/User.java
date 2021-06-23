@@ -13,9 +13,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
- * @author peter.donath@gmail.com
+ * @author donath.peter@gmail.com
  */
 
 @Entity
@@ -35,11 +36,13 @@ public class User extends AbstractEntity {
   private Long id;
 
   @Column(name = "USER_NAME", length = 100, nullable = false)
-  private String username;
+  private String userName;
 
+  @Setter
   @Column(name = "FIRST_NAME", length = 100)
   private String firstName;
 
+  @Setter
   @Column(name = "LAST_NAME", length = 100)
   private String lastName;
 }
