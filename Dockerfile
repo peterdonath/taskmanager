@@ -11,5 +11,5 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 FROM openjdk:11.0.10-jdk-oracle
 COPY --from=build /home/app/target/taskmanager-0.0.1-SNAPSHOT.jar app.jar
-ENV JAVA_OPTS="-XX:-TieredCompilation -Xmx768M -XX:MaxMetaspaceSize=192M -XX:CompressedClassSpaceSize=32M -XX:ReservedCodeCacheSize=29M -Xss1024K"
+ENV JAVA_OPTS="-XX:-TieredCompilation -Xmx768M -XX:MaxMetaspaceSize=192M -XX:CompressedClassSpaceSize=32M -XX:ReservedCodeCacheSize=29M -Xss1024K -Dspring.profiles.active=prod"
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar /app.jar"]
