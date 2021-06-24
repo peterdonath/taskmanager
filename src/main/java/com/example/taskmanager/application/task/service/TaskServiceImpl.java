@@ -80,7 +80,7 @@ public class TaskServiceImpl implements TaskService {
   @Override
   @ValidateParams
   @Transactional
-  public Boolean deleteTask(Long userId, Long taskId) {
+  public boolean deleteTask(Long userId, Long taskId) {
     Optional<Task> taskOptional = taskRepository.findById(taskId);
 
     if (taskOptional.isEmpty()

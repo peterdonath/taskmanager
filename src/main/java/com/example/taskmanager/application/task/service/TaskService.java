@@ -57,5 +57,5 @@ public interface TaskService {
    * @param taskId taskId
    * @return True if the deactivation was successful
    */
-  Boolean deleteTask(Long userId, Long taskId);
+  boolean deleteTask(Long userId, Long taskId);
 }

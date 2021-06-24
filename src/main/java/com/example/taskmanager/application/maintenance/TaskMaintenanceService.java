@@ -42,6 +42,7 @@ public class TaskMaintenanceService {
 
   /**
    * Moves from pending to done status after dateTime limit passed
+   * Repo call retrieves the ids of the pending objects to avoid large memory allocation
    */
   private void moveOutdatedTasksToDone() {
     taskRepository.findAllTasksBefore(LocalDateTime.now(), Status.PENDING)
@@ -59,9 +60,9 @@ public class TaskMaintenanceService {
     taskOptional.ifPresent(task -> {
       task.setStatus(Status.DONE);
       taskRepository.save(task);
-    });
 
-    log.info("Task updated: {}", taskOptional.get());
+      log.info("Task updated: {}", task);
+    });
   }
 
   /**

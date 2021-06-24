@@ -31,7 +31,10 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "TMS_TASK", indexes = {
-    @Index(name = "TMS_TASK_U1", columnList = "TASK_ID", unique = true)
+    @Index(name = "TMS_TASK_U1", columnList = "TASK_ID", unique = true),
+    @Index(name = "TMS_TASK_N1", columnList = "USER_ID"),
+    @Index(name = "TMS_TASK_N2", columnList = "LAST_UPDATE_DATE"),
+    @Index(name = "TMS_TASK_N3", columnList = "DATE_TIME")
 })
 public class Task extends AbstractEntity {
 
